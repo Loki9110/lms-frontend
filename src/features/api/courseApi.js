@@ -74,7 +74,7 @@ export const courseApi = createApi({
     }),
     getPublishedCourse: builder.query({
       query: () => ({
-        url: `${COURSE_API}/published-courses`,
+        url: `/api/v1/published-courses`,
         method: "GET",
       }),
       providesTags: ["Published_Courses"],
