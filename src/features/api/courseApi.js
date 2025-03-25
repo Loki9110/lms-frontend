@@ -80,10 +80,10 @@ export const courseApi = createApi({
       providesTags: ["Published_Courses"],
       transformResponse: (response) => {
         console.log('Published courses response:', response);
-        if (response && response.success) {
-          return response;
-        }
-        return { success: false, courses: [] };
+        return {
+          success: true,
+          courses: response?.courses || []
+        };
       },
       transformErrorResponse: (error) => {
         console.error('Error fetching published courses:', error);

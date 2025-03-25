@@ -243,23 +243,9 @@ const Home = () => {
               <CourseSkeleton key={index} />
             ))}
           </div>
-        ) : (!data?.courses || data.courses.length === 0) ? (
-          <div className="text-center py-14 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-dashed border-gray-200 dark:border-gray-700">
-            <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
-              <GraduationCap className="h-10 w-10 text-purple-600 dark:text-purple-400" />
-            </div>
-            <h3 className="text-xl font-semibold mt-4 text-gray-900 dark:text-gray-100">No courses available yet</h3>
-            <p className="text-gray-500 dark:text-gray-400 mt-2 max-w-md mx-auto">We're working on adding exciting new courses. Please check back soon!</p>
-            <Button asChild variant="outline" className="mt-6">
-              <Link to="/courses" className="inline-flex items-center">
-                Browse All Courses
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data.courses.slice(0, 6).map((course, index) => (
+            {data?.courses?.map((course, index) => (
               <Link 
                 to={`/course-detail/${course._id}`} 
                 key={course._id} 
@@ -370,7 +356,7 @@ const Home = () => {
                   </div>
                 </div>
               </Link>
-            ))}
+            )) || []}
           </div>
         )}
       </div>
